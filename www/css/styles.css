@@ -1,0 +1,588 @@
+/* #region for settings */
+/* 
+@media (min-width:320px)  { smartphones, iPhone, portrait 480x320 phones };
+@media (min-width:481px)  { portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. }
+@media (min-width:641px)  { portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones }
+@media (min-width:961px)  { tablet, landscape iPad, lo-res laptops ands desktops }
+@media (min-width:1025px) { big landscape tablets, laptops, and desktops }
+@media (min-width:1281px) { hi-res laptops and desktops }  */
+
+/* CSS variabele */
+:root {
+  --white-color: #f5f5f7;
+  --dark-color: #1d1d1f;
+  /* --body-bg-color: #9c9c9c; */
+  --body-bg-color: #e7e393;
+  --section-bg-color: #854d27;
+  --section-bg-color-alt: #dd7230;
+  --navigation-item-color: #f4c95d;
+  --navigation-item-hover-color: #e7e393;
+  /* --navigation-icon-hover-color: #ffae00; */
+  --navigation-icon-hover-color: #e7e393;
+
+  --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+
+  --scroll-bar-color: rgb(88, 88, 88);
+  --scroll-thumb-color: #282f4e;
+  --scroll-thumb-hover-color: #454f6b;
+}
+
+/* Voor een authentiek Duits restaurant zou je kunnen overwegen om een kleurenpalet te gebruiken dat warmte en traditie uitstraalt. Hier is een suggestie voor een kleurenpalet met hex-codes:
+
+#854d27 (Donker kastanjebruin): Representeert de robuuste houten meubels die vaak in Duitse tavernes worden gevonden.
+#dd7230 (Pompoenoranje): Brengt de warmte van een gezellige open haard of kaarslicht over.
+#f4c95d (Zonnig geel): Kan denken aan versgebakken brood of gebak.
+#e7e393 (Zacht olijfgroen): Weerspiegelt de natuurlijke ingrediënten en biologische producten.
+#04030f (Diep zwart): Geeft een gevoel van elegantie en diepte, perfect voor tekst of accenten.
+
+Deze kleuren samen kunnen een gevoel van gastvrijheid en traditionele Duitse sfeer creëren. */
+
+/* Typogrophy */
+/* h1,h2,h3,h4,h5,h6,p{
+    
+  } */
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 11px;
+  background: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 100%;
+  background: var(--scroll-thumb-color);
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover-color);
+}
+
+* {
+  margin: 0 0;
+  padding: 0 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+body {
+  background-color: var(--body-bg-color);
+  position: relative;
+}
+/* #endregion for settings */
+
+/* #region for multiple pages */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container_width {
+  width: 90%;
+}
+
+.min_page_heigt {
+  min-height: 100vh;
+}
+
+.hr-dark {
+  border: 1px solid rgb(88, 88, 88);
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.btn-info {
+  font-size: 16px;
+  color: var(--white-color);
+  align-content: center;
+  padding: 8px 16px;
+  margin: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: rgb(0, 60, 180);
+  border-radius: 5px;
+}
+
+.btn-info:hover {
+  background-color: rgb(0, 100, 180);
+}
+
+/* #endregion for multiple pages */
+
+/* #region for header.php */
+.header_nav {
+  background-color: var(--section-bg-color);
+}
+
+.nav_top {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav_top img {
+  mix-blend-mode: screen;
+  width: 65px;
+  height: 60px;
+}
+
+.nav_top i {
+  color: var(--navigation-item-color);
+  transition: all 0.3s ease;
+}
+.nav_top i:hover {
+  color: var(--navigation-icon-hover-color);
+}
+
+.nav_top a {
+  margin-top: auto;
+  margin-left: 40px;
+  text-decoration-line: none;
+  color: var(--navigation-item-color);
+  font-size: 20px;
+}
+
+.nav_top {
+  height: 100%;
+  display: flex;
+}
+
+.left {
+  max-width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+
+  /* & img{
+    mix-blend-mode: color;
+  } */
+}
+.right {
+  max-width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.right p {
+  color: var(--navigation-item-color);
+  font-size: 12px;
+  text-align: center;
+  align-self: center;
+  margin: 4px;
+  cursor: default;
+}
+
+.search_box {
+  width: 40%;
+  height: 35%;
+  background-color: rgb(78, 78, 78);
+  padding: 0 0.8rem;
+  /* border-radius: 0; */
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.2s;
+}
+
+.search_box:hover {
+  width: 50%;
+  box-shadow: 0 0.1rem 0.4rem #0002;
+}
+
+.search_box input[type="search"] {
+  width: 100%;
+  padding: 0 0.5rem 0 0.3rem;
+  background-color: transparent;
+  color: var(--navigation-item-color);
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
+.searchButton {
+  justify-self: flex-end;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--navigation-item-color);
+  height: 100%;
+  font-size: 20px;
+  max-width: 10%;
+  cursor: pointer;
+  border-left: 1px solid rgb(105, 105, 105);
+}
+
+.right a {
+  margin: 20px;
+}
+
+.icon a {
+  color: var(--navigation-item-color);
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3498db;
+  color: var(--white-color);
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  align-self: center;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover {
+  /* background-color: #2980B9; */
+  background-color: var(--navigation-icon-hover-color);
+}
+
+.dropbtn:focus {
+  /* background-color: #2980B9; */
+  background-color: rgb(189, 126, 0);
+  border-radius: 10px 10px 0 0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /* background-color: #f1f1f1; */
+  background-color: rgb(189, 126, 0);
+  width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transform: translateX(-40%);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  /* color: black; */
+  color: var(--navigation-item-color);
+  padding: 6px 8px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  /* background-color: #ddd; */
+  background-color: var(--navigation-icon-hover-color);
+  border-radius: 10px;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+
+.hr-yellow {
+  border: 1px solid var(--navigation-icon-hover-color);
+}
+
+/* #endregion for header.php */
+
+/* #region for nav.php */
+nav {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding: 1em;
+}
+
+nav ul li a {
+  text-decoration-line: none;
+  font-size: 19px;
+  color: var(--navigation-item-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav ul a:hover {
+  color: var(--navigation-icon-hover-color);
+}
+/* #endregion for nav.php */
+
+/* #region for footer.php css */
+footer {
+  background-color: var(--section-bg-color);
+  display: flex;
+  justify-content: center;
+
+  & .footer_inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    max-height: max-content;
+    width: 90%;
+    max-width: 1680px;
+    padding: 40px 0px;
+    color: var(--white-color);
+
+    @media (min-width: 1025px) {
+      /* display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr 1fr 1fr; */
+    }
+  }
+}
+
+.footer_nav_left {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  border: 2px gray solid;
+  border-radius: 4px;
+  padding: 20px;
+
+  & button {
+    width: 100%;
+    border-radius: 4px;
+    margin: 15px 0 0;
+  }
+}
+
+.footer_nav_links {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin: 16px 0;
+  padding: 16px 0;
+  border-bottom: 1px solid gray;
+  & .link_holder {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    & ul {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      gap: 8px;
+      & li {
+        & a {
+          color: var(--white-color);
+          text-decoration: none;
+
+          &:hover {
+            color: var(--navigation-item-hover-color);
+            transition: cubic-bezier(0.215, 0.61, 0.355, 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer_nav_right {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+
+  margin: 8px 0;
+
+  /* Style the buttons that are used to open and close the accordion panel */
+  & .accordion {
+    /* background-color: #eee; */
+    background-color: transparent;
+    /* color: #444; */
+    color: var(--white-color);
+    cursor: pointer;
+    /* padding: 18px; */
+    padding: 18px 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+    /* border-bottom: 1px solid gray; */
+    outline: none;
+    transition: 0.4s;
+  }
+
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  & .active,
+  .accordion:hover {
+    /* background-color: #ccc; */
+    color: var(--navigation-item-hover-color);
+  }
+
+  & .accordion:after {
+    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+  }
+
+  & .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+
+  /* Style the accordion panel. Note: hidden by default */
+  & .panel {
+    padding: 8px 16px;
+    /* background-color: white; */
+    /* color: #777; */
+    display: none;
+    overflow: hidden;
+    /* max-height: 0; */
+    transition: max-height 0.2s ease-out;
+    /* border-bottom: 1px solid gray; */
+  }
+}
+
+.footer_nav_bottom {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 0;
+  gap: 24px;
+  border-top: 1px solid gray;
+
+  & a {
+    text-decoration: none;
+    color: var(--white-color);
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+      color: var(--navigation-item-hover-color);
+      border-bottom: 1px solid gray;
+    }
+  }
+}
+
+/* #endregion for footer.php css */
+
+/* #region for index.php */
+/* #region for index.php main part 1 css */
+
+.container_img {
+  background-image: url("../img/julian-hochgesang-3-y9vq8uoxk-unsplash.jpg");
+  image-rendering: optimizeQuality;
+  image-rendering: optimizeSpeed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 95vh;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center; */
+  align-items: flex-start;
+  /* width: 40%; */
+  height: 95vh;
+}
+
+.txt_box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(76, 76, 76, 0.438);
+  border-radius: 10px;
+  color: var(--white-color);
+  padding: 15px;
+
+  & h1{
+    background-color: var(--section-bg-color);
+    opacity: 0.7;
+    border-radius: 10px 10px 0 0;
+    font-size: 70px;
+  }
+  
+  & p{
+    background-color: var(--section-bg-color);
+    opacity: 0.7;
+    border-radius: 0 0 10px 10px;
+    font-size: 20px;
+    padding: 2px;
+  }
+
+  & a{
+    width: fit-content;
+    background-color: var(--section-bg-color-alt);
+    color: var(--white-color);
+    border-radius: 5px;
+    text-decoration-line: none;
+    font-size: 18px;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover{
+      background-color: var(--navigation-item-color);
+    }
+  }
+}
+/* #endregion for index.php main part 1 */
+/* #endregion for index.php */
