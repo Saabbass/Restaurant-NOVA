@@ -120,10 +120,9 @@ if (
         $sql = "INSERT INTO gebruiker(email, gebruiker_voornaam, gebruiker_tussenvoegsel, gebruiker_achternaam, wachtwoord, rol, adres_id) VALUES('$email', '$voornaam', '$tussenvoegsel', '$achternaam', '$password', '$rol', '$adres_id')";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-          header("Location: signUp.php?success=Your account has been created succesfully");
+
+        if ($stmt->execute()) {
+          header("Location: signUp.php?success=Uw account is aangemaakt!");
           exit();
         } else {
           header("Location: signUp.php?error=Unknown error occurred&$user_data");

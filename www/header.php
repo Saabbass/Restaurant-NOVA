@@ -41,12 +41,12 @@
               <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn"><?php echo $_SESSION['voornaam']; ?></button>
                 <div id="myDropdown" class="dropdown-content">
-                  <?php if (isset($_SESSION['role'])) {
-                    $data = $_SESSION['role'];
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
                     if ($data == 'admin') {
                   ?>
-                      <a href="gebruikers.php">Gebruikers</a>
-                      <a href="producten_overzicht.php">Producten</a>
+                      <a href="user_index.php">Gebruikers</a>
+                      <a href="reservation_index.php">Reserveringen</a>
 
                     <?php } else {
                     ?>

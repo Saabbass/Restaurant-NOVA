@@ -364,6 +364,7 @@ body {
   text-decoration: none;
   display: block;
   transition: all 0.3s ease;
+  width: fit-content;
 }
 
 /* Change color of dropdown links on hover */
@@ -371,6 +372,7 @@ body {
   /* background-color: #ddd; */
   background-color: var(--navigation-icon-hover-color);
   border-radius: 10px;
+
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
@@ -775,3 +777,82 @@ form {
   margin: 20px auto;
 }
 /* #endregion for login and signup css */
+
+/* #region for gebruikers.php */
+.container_scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1in;
+  height: 8in;
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding: 5px;
+  margin: 20px 0;
+  /* background-color: #88888891; */
+  background-color: var(--btn-color-alt);
+  border-radius: 10px;
+}
+
+.container_scroll table {
+  /* background-color: #88888885; */
+  background-color: var(--section-bg-color-light);
+  border: var(--border-medium-dark);
+  border-radius: 10px;
+  width: 100%;
+  border-spacing: 0 1em;
+  color: var(--dark-color);
+}
+
+.container_scroll table td {
+  justify-content: space-between;
+  text-align: center;
+  color: var(--dark-color);
+
+  /* border-bottom: #555 solid 2px; */
+  border-bottom: var(--border-medium-dark);
+  padding-bottom: 5px;
+}
+
+.container_scroll table td input {
+  padding: 2px;
+  margin: 5px;
+}
+
+.btn-delete {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  align-content: center;
+  padding: 8px 16px;
+  margin: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: red;
+  border-radius: 10px;
+}
+
+.btn-delete:hover {
+  background-color: rgb(209, 65, 65);
+}
+
+.btn-update {
+  font-size: 16px;
+  color: var(--white-color);
+  align-content: center;
+  padding: 8px 16px;
+  margin: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: orange;
+  border-radius: 10px;
+}
+
+.btn-update:hover {
+  background-color: rgb(212, 148, 28);
+}
+/* #endregion for gebruikers.php */

@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
           $_SESSION['voornaam']  = $dbuser['gebruiker_voornaam'];
           $_SESSION['tussenvoegsel']  = $dbuser['gebruiker_tussenvoegsel'];
           $_SESSION['achternaam']   = $dbuser['gebruiker_achternaam'];
-          $_SESSION['role']       = $userRole;
+          $_SESSION['rol']       = $userRole;
           //$_SESSION['backgroundColor'] = $dbuser['backgroundColor'];
 
           if (headers_sent()) {
