@@ -9,23 +9,53 @@
 
 /* CSS variabele */
 :root {
+  /* font colors */
   --white-color: #f5f5f7;
-  --dark-color: #1d1d1f;
-  /* --body-bg-color: #9c9c9c; */
+  --dark-color: #04030f;
+
+  /* background-colors */
   --body-bg-color: #e7e393;
+  --body-bg-color-alt: #9c9c9c;
   --section-bg-color: #854d27;
   --section-bg-color-alt: #dd7230;
-  --navigation-item-color: #f4c95d;
-  --navigation-item-hover-color: #e7e393;
-  /* --navigation-icon-hover-color: #ffae00; */
-  --navigation-icon-hover-color: #e7e393;
+  --section-bg-color-light: #f4c95d;
 
+  /* clickables-colors */
+  --navigation-item-color: #f4c95d;
+  --navigation-item-color-alt: #dd7230;
+  --navigation-item-color-dark: #04030f;
+
+  --navigation-item-hover-color: #e7e393;
+  /* --navigation-item-hover-color-alt: #ffae00; */
+  --navigation-item-hover-color-alt: #f4c95d;
+
+  --navigation-icon-hover-color: #e7e393;
+  /* --navigation-icon-hover-color-alt: #ffae00; */
+  --navigation-icon-hover-color-alt: #f4c95d;
+
+  --btn-color: #dd7230;
+  --btn-color-alt: #854d27;
+  /* --btn-color-alt-light: #ffae00; */
+  --btn-color-alt-light: #f4c95d;
+
+  --btn-hover-color: #f4c95d;
+  --btn-hover-color-alt: #e7e393;
+  --btn-hover-color-dark: #dd7230;
+
+  /* detail colors */
   --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
 
-  --scroll-bar-color: rgb(88, 88, 88);
-  --scroll-thumb-color: #282f4e;
-  --scroll-thumb-hover-color: #454f6b;
+  --border-small: 2px solid #e7e393;
+  --border-small-alt: 2px solid #f4c95d;
+  --border-small-dark: 2px solid #dd7230;
+  --border-medium: 4px solid #e7e393;
+  --border-medium-alt: 4px solid #f4c95d;
+  --border-medium-dark: 4px solid #dd7230;
+
+  --scroll-bar-color: #f4c95d;
+  --scroll-thumb-color: #dd7230;
+  --scroll-thumb-hover-color: #e7e393;
 }
 
 /* Voor een authentiek Duits restaurant zou je kunnen overwegen om een kleurenpalet te gebruiken dat warmte en traditie uitstraalt. Hier is een suggestie voor een kleurenpalet met hex-codes:
@@ -92,6 +122,8 @@ p {
   padding: 0 0;
   box-sizing: border-box;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 }
 
 body {
@@ -111,6 +143,7 @@ body {
 
 .container_width {
   width: 90%;
+  max-width: 1440px;
 }
 
 .min_page_heigt {
@@ -125,7 +158,7 @@ body {
 
 .btn-info {
   font-size: 16px;
-  color: var(--white-color);
+  color: var(--dark-color);
   align-content: center;
   padding: 8px 16px;
   margin: 8px;
@@ -133,12 +166,14 @@ body {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
-  background-color: rgb(0, 60, 180);
+  /* background-color: rgb(0, 60, 180); */
+  background-color: var(--btn-color);
   border-radius: 5px;
 }
 
 .btn-info:hover {
-  background-color: rgb(0, 100, 180);
+  /* background-color: rgb(0, 100, 180); */
+  background-color: var(--btn-hover-color);
 }
 
 /* #endregion for multiple pages */
@@ -159,9 +194,9 @@ body {
 }
 
 .nav_top img {
-  mix-blend-mode: screen;
-  width: 65px;
-  height: 60px;
+  object-fit: cover;
+  width: 148px;
+  height: 66px;
 }
 
 .nav_top i {
@@ -215,7 +250,7 @@ body {
 .search_box {
   width: 40%;
   height: 35%;
-  background-color: rgb(78, 78, 78);
+  background-color: var(--section-bg-color-alt);
   padding: 0 0.8rem;
   /* border-radius: 0; */
   border-radius: 8px;
@@ -240,6 +275,16 @@ body {
   font-size: 18px;
   border: none;
   outline: none;
+
+  &::placeholder {
+    width: 100%;
+    padding: 0 0.5rem 0 0.3rem;
+    background-color: transparent;
+    color: var(--navigation-item-color);
+    font-size: 18px;
+    border: none;
+    outline: none;
+  }
 }
 
 .searchButton {
@@ -265,8 +310,10 @@ body {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #3498db;
-  color: var(--white-color);
+  /* background-color: #3498db; */
+  background-color: var(--btn-color);
+  color: var(--dark-color);
+  font-weight: 700;
   padding: 5px;
   font-size: 16px;
   border: none;
@@ -284,7 +331,8 @@ body {
 
 .dropbtn:focus {
   /* background-color: #2980B9; */
-  background-color: rgb(189, 126, 0);
+  /* background-color: rgb(189, 126, 0); */
+  background-color: var(--btn-color-alt-light);
   border-radius: 10px 10px 0 0;
 }
 
@@ -300,7 +348,8 @@ body {
   display: none;
   position: absolute;
   /* background-color: #f1f1f1; */
-  background-color: rgb(189, 126, 0);
+  /* background-color: rgb(189, 126, 0); */
+  background-color: var(--btn-color-alt-light);
   width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -310,7 +359,7 @@ body {
 /* Links inside the dropdown */
 .dropdown-content a {
   /* color: black; */
-  color: var(--navigation-item-color);
+  color: var(--dark-color);
   padding: 6px 8px;
   text-decoration: none;
   display: block;
@@ -381,9 +430,9 @@ footer {
     height: 100%;
     max-height: max-content;
     width: 90%;
-    max-width: 1680px;
+    max-width: 1440px;
     padding: 40px 0px;
-    color: var(--white-color);
+    color: var(--dark-color);
 
     @media (min-width: 1025px) {
       /* display: grid;
@@ -397,7 +446,8 @@ footer {
   height: 100%;
   width: 100%;
   max-width: 100%;
-  border: 2px gray solid;
+  /* border: 2px gray solid; */
+  border: var(--border-small);
   border-radius: 4px;
   padding: 20px;
 
@@ -428,7 +478,7 @@ footer {
       gap: 8px;
       & li {
         & a {
-          color: var(--white-color);
+          color: var(--dark-color);
           text-decoration: none;
 
           &:hover {
@@ -453,7 +503,7 @@ footer {
     /* background-color: #eee; */
     background-color: transparent;
     /* color: #444; */
-    color: var(--white-color);
+    color: var(--dark-color);
     cursor: pointer;
     /* padding: 18px; */
     padding: 18px 0;
@@ -475,7 +525,8 @@ footer {
   & .accordion:after {
     content: "\02795"; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: #777;
+    /* color: #777; */
+    color: var(--navigation-item-color);
     float: right;
     margin-left: 5px;
   }
@@ -507,7 +558,7 @@ footer {
 
   & a {
     text-decoration: none;
-    color: var(--white-color);
+    color: var(--dark-color);
     transition: ease-in-out 0.3s;
 
     &:hover {
@@ -523,17 +574,31 @@ footer {
 /* #region for index.php main part 1 css */
 
 .container_img {
-  background-image: url("../img/julian-hochgesang-3-y9vq8uoxk-unsplash.jpg");
-  image-rendering: optimizeQuality;
-  image-rendering: optimizeSpeed;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* max-width: 1440px; */
+  width: 100%;
+  margin: 0 auto;
+  /* background-image: url("../img/alex-PZC7p-Pstmg-unsplash.jpg"); */
+  /* image-rendering: optimizeQuality; */
+  /* image-rendering: optimizeSpeed;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  min-width: 100%;
-  min-height: 95vh;
+  background-size: cover; */
+  /* min-width: 100%;
+  min-height: 95vh; */
+
+  & img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+  }
 }
 
 .box {
+  position: absolute;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -541,7 +606,10 @@ footer {
   /* align-items: center; */
   align-items: flex-start;
   /* width: 40%; */
-  height: 95vh;
+  /* height: 95vh; */
+  width: 90%;
+  max-width: 1440px;
+  height: 100%;
 }
 
 .txt_box {
@@ -549,28 +617,30 @@ footer {
   flex-direction: column;
   background-color: rgba(76, 76, 76, 0.438);
   border-radius: 10px;
-  color: var(--white-color);
+  color: var(--dark-color);
   padding: 15px;
+  width: fit-content;
 
-  & h1{
+  & h1 {
     background-color: var(--section-bg-color);
-    opacity: 0.7;
+    opacity: 0.95;
     border-radius: 10px 10px 0 0;
     font-size: 70px;
+    padding-right: 24px;
   }
-  
-  & p{
+
+  & p {
     background-color: var(--section-bg-color);
-    opacity: 0.7;
+    opacity: 0.95;
     border-radius: 0 0 10px 10px;
     font-size: 20px;
     padding: 2px;
   }
 
-  & a{
+  & a {
     width: fit-content;
     background-color: var(--section-bg-color-alt);
-    color: var(--white-color);
+    color: var(--dark-color);
     border-radius: 5px;
     text-decoration-line: none;
     font-size: 18px;
@@ -579,10 +649,129 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover{
+    &:hover {
       background-color: var(--navigation-item-color);
     }
   }
 }
 /* #endregion for index.php main part 1 */
 /* #endregion for index.php */
+
+/* #region for login and signup css */
+.form_align {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0px;
+}
+
+form {
+  width: 700px;
+  /* border: 2px solid #ccc; */
+  border: var(--border-small-alt);
+  padding: 30px;
+  /* background-color: #fff; */
+  background-color: var(--section-bg-color);
+  border-radius: 15px;
+}
+
+.form_head {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.form_group label {
+  color: var(--dark-color);
+  font-size: 18px;
+  padding: 10px;
+}
+
+.form_group input {
+  display: block;
+  border: 2px solid #ccc;
+  background-color: var(--body-bg-color);
+  width: 95%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form_group input:hover {
+  /* border-color: rgb(0, 60, 180); */
+  border: var(--border-small-alt);
+}
+
+.form_group_radio label {
+  color: var(--dark-color);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form_group_radio label:hover {
+  color: rgb(0, 60, 180);
+}
+
+.form_group_radio input {
+  width: 2rem;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button_submit {
+  float: right;
+  /* background-color: rgb(0, 60, 180); */
+  background-color: var(--btn-color);
+  padding: 10px 15px;
+  color: var(--dark-color);
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button_submit:hover {
+  /* background-color: rgb(0, 100, 180); */
+  background-color: var(--btn-hover-color);
+}
+
+.form_content_switch {
+  font-size: 18px;
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+.form_content_switch:hover {
+  text-decoration: underline;
+  /* color: rgb(0, 60, 180); */
+  color: var(--btn-color-alt-light);
+}
+
+.error {
+  background: rgb(243, 140, 140);
+  color: rgb(90, 18, 18);
+  padding: 10px;
+  width: 95%;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+.success {
+  background: rgb(98, 211, 143);
+  color: rgb(0, 82, 20);
+  padding: 10px;
+  width: 95%;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+/* #endregion for login and signup css */

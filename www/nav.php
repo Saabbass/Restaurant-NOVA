@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="nl-NL">
 
 <head>
 </head>
 
-<body>
+<body> -->
     <!-- begin navbar -->
     <section class="header_nav">
         <section class="container">
@@ -31,6 +31,6 @@
         </section>
     </section>
     <!-- einde navbar -->
-</body>
+<!-- </body>
 
-</html>
+</html> -->

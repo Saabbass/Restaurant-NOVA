@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="nl-NL">
 
 <head>
 </head>
 
-<body>
+<body> -->
     <section>
         <footer>
             <div class="footer_inner">

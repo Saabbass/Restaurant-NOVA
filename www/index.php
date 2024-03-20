@@ -1,46 +1,50 @@
+<?php
+session_start();
+// require database.php wordt gebruikt voor de database connectie
+require 'database.php';
+?>
 <!-- Een enkel woord voor een Duits restaurant zou “Gasthof” kunnen zijn, wat verwijst naar een traditionele Duitse herberg of eetgelegenheid. Het is kort, krachtig en heeft een authentiek Duitse klank. Prost op uw succes! -->
-
+<!-- 
 <!DOCTYPE html>
 <html lang="nl-NL">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="css/styles.css?v=<?php echo time();?>">
 </head>
 
-<body>
+<body> -->
 
   <!-- begin ingoegen van navbar / header -->
   <?php
-  include('header.php');
+  require 'header.php';
   ?>
   <!-- einde invoegen van navbar / header -->
   <section id="content" class="min_page_heigt">
     <main>
       <!-- begin main part 1 -->
       <section class="container_img">
-        <div class="container">
-          <div class="container_width">
+        <img src="img/alex-PZC7p-Pstmg-unsplash.jpg" alt="">
+
             <div class="box">
               <div class="txt_box">
-                <h1>Uw auto dealer</h1>
+                <h1>Gasthof</h1>
 
-                <p>Zoek een dealer bij u in de buurt.</p>
+                <p>Uw favoriete restaurant</p>
 
-                <a href="">Meer weten</a>
+                <a href="">Reserveer nu uw tafel</a>
               </div>
-            </div>
-          </div>
+
         </div>
       </section>
     </main>
   </section>
 
   <?php
-  include('footer.php');
+  require 'footer.php';
   ?>
 
-</body>
+<!-- </body>
 
-</html>
+</html> -->

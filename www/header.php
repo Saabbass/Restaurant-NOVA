@@ -19,7 +19,7 @@
         <div class="nav_top">
           <div class="left">
             <img src="img/gasthof.png" alt="gasthof">
-            <a href="index.php">De auto webwinkel</a>
+            <!-- <a href="index.php">De Gasthof</a> -->
             <!-- begin box voor de rechterkant van de header -->
             <!-- einde box voor de rechterkant van de header -->
           </div>
@@ -75,6 +75,6 @@
     <!-- einde invoegen van navbar -->
   </section>
   <!-- einde header -->
-</body>
+  <!-- </body>
 
-</html>
+</html> -->
