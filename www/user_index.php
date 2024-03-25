@@ -10,6 +10,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
 
   $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+  $data = $_SESSION['rol'];
+
 ?>
 
   <!-- begin ingoegen van navbar / header -->
@@ -22,15 +24,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
       <div class="container">
         <div class="container_width">
           <section class="container_scroll">
-          <div>
-              <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
+            <div class="scroll_top">
+              <?php if ($data == 'admin' || $data == 'employee') { ?>
+                <a class="btn-info" href="user_create.php">Maak gebruiker aan</a>
               <?php } ?>
-            </div>
-            <div>
-              <?php if (isset($_GET['success'])) { ?>
-                <p class="success"><?php echo $_GET['success']; ?></p>
-              <?php } ?>
+              <div>
+                <?php if (isset($_GET['error'])) { ?>
+                  <p class="error"><?php echo $_GET['error']; ?></p>
+                <?php } ?>
+              </div>
+              <div>
+                <?php if (isset($_GET['success'])) { ?>
+                  <p class="success"><?php echo $_GET['success']; ?></p>
+                <?php } ?>
+              </div>
             </div>
             <table>
               <thead>
@@ -45,6 +52,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
                   <th>Straat</th>
                   <th>Huisnummer</th>
                   <th>Toevoeging</th>
+                  <th>Rol</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,22 +68,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
                     <td><?php echo $user['straat'] ?></td>
                     <td><?php echo $user['huisnummer'] ?></td>
                     <td><?php echo $user['toevoeging'] ?></td>
-                    <td>
-                      <?php if (isset($_SESSION['rol'])) {
-                        $data = $_SESSION['rol'];
-                        if ($data == 'admin') {
-                      ?>
-                          <a href="user_delete.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-delete">delete</a>
-                          <a href="updateUser.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-update">update</a>
-
-                        <?php } elseif ($data == 'employee') { ?>
-                          <a href="updateUser.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-update">update</a>
-                        <?php } else {
-                        ?>
-
-                        <?php } ?>
-                      <?php } ?>
-                    </td>
+                    <?php
+                    if ($data == 'admin') {
+                    ?>
+                      <td><?php echo $user['rol'] ?></td>
+                      <td>
+                        <a href="user_delete.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-delete">delete</a>
+                        <a href="user_update.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-update">update</a>
+                      </td>
+                    <?php } else if ($data == 'employee') { ?>
+                      <td><?php echo $user['rol'] ?></td>
+                      <td>
+                        <a href="user_update.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-update">update</a>
+                      </td>
+                    <?php } ?>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

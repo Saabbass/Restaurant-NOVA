@@ -13,13 +13,16 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="product_index.php">Zoeken & kopen</a>
+                                <a href="/">Startpagina</a>
                             </li>
                             <li>
-                                <a href="">Aankoopadvies</a>
+                                <a href="menu_index.php">Menukaart</a>
                             </li>
                             <li>
-                                <a href="">Onderdelen</a>
+                                <a href="product_index.php">Gerechten</a>
+                            </li>
+                            <li>
+                                <a href="reservation_create.php">Tafel reserveren</a>
                             </li>
                             <li>
                                 <a href="">Over ons</a>

@@ -103,7 +103,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <script src="js/accordion.js" async></script>
                 <div class="footer_nav_right">
                     <button class="accordion"><h6>Over ons</h6></button>
@@ -123,7 +122,6 @@
                         <p>Lorem ipsum...</p>
                     </div>
                 </div>
-
                 <div class="footer_nav_bottom">
                     <h5>
                         <a href="">&copy; 2024. website made by Saabbass</a>

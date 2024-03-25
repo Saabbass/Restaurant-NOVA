@@ -43,17 +43,22 @@
                 <div id="myDropdown" class="dropdown-content">
                   <?php if (isset($_SESSION['rol'])) {
                     $data = $_SESSION['rol'];
-                    if ($data == 'admin') {
+                    if ($data == 'admin' || $data == 'employee') {
                   ?>
                       <a href="user_index.php">Gebruikers</a>
                       <a href="reservation_index.php">Reserveringen</a>
+                      <a href="product_index.php">Gerechten</a>
+                      <a href="menu_index.php">Menukaart</a>
+                      <a href="menucategorie_index.php">Menu opties</a>
 
                     <?php } else {
                     ?>
+                      <a href="reservation_index.php">Reserveringen</a>
+                      <a href="product_index.php">Gerechten</a>
                     <?php } ?>
                   <?php } ?>
-                  <a href="user_settings.php">instellingen</a>
-                  <a href="session_logout.php">Logout</a>
+                  <a href="account_dashboard.php">Account</a>
+                  <a href="logout_session.php">Logout</a>
                 </div>
               </div>
             <?php

@@ -10,8 +10,9 @@ if (isset($_POST['submit'])) {
       $passwordForm = $_POST['password'];
       require 'database.php';
 
-      $sql = "SELECT * FROM gebruiker  WHERE email = '$emailForm'";
+      $sql = "SELECT * FROM gebruiker WHERE email = :emailForm";
       $stmt = $conn->prepare($sql);
+      $stmt->bindParam(":emailForm", $emailForm);
       $stmt->execute();
 
       // $stmt->fetch(PDO::FETCH_NUM);
@@ -20,8 +21,9 @@ if (isset($_POST['submit'])) {
       if ($stmt->rowCount() > 0) {
 
         //resultaat gevonden? Dan maken we een user-array $dbuser
-        $sql = "SELECT * FROM gebruiker WHERE email='$emailForm'";
+        $sql = "SELECT * FROM gebruiker WHERE email = :emailForm";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":emailForm", $emailForm);
         $stmt->execute();
         $dbuser = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -46,7 +48,8 @@ if (isset($_POST['submit'])) {
           if (headers_sent()) {
             die("Redirect failed. Please refresh the page.");
           } else {
-            exit(header("Location:index.php"));
+            // exit(header("Location:index.php"));
+            exit(header("Location:account_dashboard.php"));
             echo "You are logged in";
           }
         } else {

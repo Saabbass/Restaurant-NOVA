@@ -1,23 +1,34 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Nieuw Product</title>
-</head>
-
-<body> -->
-<!-- begin ingoegen van navbar / header -->
 <?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+  echo "You are not logged in, please login. ";
+  echo "<a href='login.php'>Login here</a>";
+  exit;
+}
+
+if ($_SESSION['rol'] != 'admin' && $_SESSION['rol'] != 'employee') {
+  echo "U bent niet bevoegd om deze pagina te bekijken, login in als admin of medewerker!";
+  exit;
+}
+
+require 'database.php';
+
+
+// $sql = "SELECT * FROM gebruiker INNER JOIN adres ON gebruiker.adres_id = adres.adres_id WHERE gebruiker.gebruiker_id = $user_id";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute();
+// $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
 require 'header.php';
 ?>
-<!-- einde invoegen van navbar / header -->
-<!-- action en method zijn atributen -->
-<div class="container_img">
+
+<main>
   <div class="container">
     <div class="container_width">
       <section class="form_align">
-        <form action="signUp_session.php" method="post">
-          <h1 class="form_head">Maak een nieuwe gebruiker aan</h1>
+        <form action="user_create_session.php" method="post">
+          <h1 class="form_head">Account toevoegen</h1>
           <div>
             <?php if (isset($_GET['error'])) { ?>
               <p class="error"><?php echo $_GET['error']; ?></p>
@@ -33,7 +44,7 @@ require 'header.php';
             <?php if (isset($_GET['email'])) { ?>
               <input type="email" name="email" id="email" value="<?php echo $_GET['email']; ?>">
             <?php } else { ?>
-              <input type="email" name="email" id="email" placeholder="email">
+              <input type="text" name="email" id="email" placeholder="Email">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -42,7 +53,7 @@ require 'header.php';
             <?php if (isset($_GET['voornaam'])) { ?>
               <input type="text" name="voornaam" id="voornaam" value="<?php echo $_GET['voornaam']; ?>">
             <?php } else { ?>
-              <input type="text" name="voornaam" id="voornaam" placeholder="voornaam">
+              <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -50,7 +61,7 @@ require 'header.php';
             <?php if (isset($_GET['tussenvoegsel'])) { ?>
               <input type="text" name="tussenvoegsel" id="tussenvoegsel" value="<?php echo $_GET['tussenvoegsel']; ?>">
             <?php } else { ?>
-              <input type="text" name="tussenvoegsel" id="tussenvoegsel" placeholder="tussenvoegsel">
+              <input type="text" name="tussenvoegsel" id="tussenvoegsel" placeholder="Tussenvoegsel">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -58,7 +69,7 @@ require 'header.php';
             <?php if (isset($_GET['achternaam'])) { ?>
               <input type="text" name="achternaam" id="achternaam" value="<?php echo $_GET['achternaam']; ?>">
             <?php } else { ?>
-              <input type="text" name="achternaam" id="achternaam" placeholder="achternaam">
+              <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -66,7 +77,7 @@ require 'header.php';
             <?php if (isset($_GET['land'])) { ?>
               <input type="text" name="land" id="land" value="<?php echo $_GET['land']; ?>">
             <?php } else { ?>
-              <input type="text" name="land" id="land" placeholder="land">
+              <input type="text" name="land" id="land" placeholder="Land">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -74,7 +85,7 @@ require 'header.php';
             <?php if (isset($_GET['postcode'])) { ?>
               <input type="text" name="postcode" id="postcode" value="<?php echo $_GET['postcode']; ?>">
             <?php } else { ?>
-              <input type="text" name="postcode" id="postcode" placeholder="postcode">
+              <input type="text" name="postcode" id="postcode" placeholder="Postcode">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -82,7 +93,7 @@ require 'header.php';
             <?php if (isset($_GET['woonplaats'])) { ?>
               <input type="text" name="woonplaats" id="woonplaats" value="<?php echo $_GET['woonplaats']; ?>">
             <?php } else { ?>
-              <input type="text" name="woonplaats" id="woonplaats" placeholder="woonplaats">
+              <input type="text" name="woonplaats" id="woonplaats" placeholder="Woonplaats">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -90,7 +101,7 @@ require 'header.php';
             <?php if (isset($_GET['straat'])) { ?>
               <input type="text" name="straat" id="straat" value="<?php echo $_GET['straat']; ?>">
             <?php } else { ?>
-              <input type="text" name="straat" id="straat" placeholder="straat">
+              <input type="text" name="straat" id="straat" placeholder="Straat">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -98,7 +109,7 @@ require 'header.php';
             <?php if (isset($_GET['huisnummer'])) { ?>
               <input type="text" name="huisnummer" id="huisnummer" value="<?php echo $_GET['huisnummer']; ?>">
             <?php } else { ?>
-              <input type="text" name="huisnummer" id="huisnummer" placeholder="huisnummer">
+              <input type="text" name="huisnummer" id="huisnummer" placeholder="Huisnummer">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -106,7 +117,7 @@ require 'header.php';
             <?php if (isset($_GET['toevoeging'])) { ?>
               <input type="text" name="toevoeging" id="toevoeging" value="<?php echo $_GET['toevoeging']; ?>">
             <?php } else { ?>
-              <input type="text" name="toevoeging" id="toevoeging" placeholder="toevoeging">
+              <input type="text" name="toevoeging" id="toevoeging" placeholder="Toevoeging">
             <?php } ?>
           </div>
           <div class="form_group">
@@ -117,29 +128,24 @@ require 'header.php';
             <label for="check_wachtwoord">Herhaal wachtwoord</label>
             <input type="password" name="check_wachtwoord" id="check_wachtwoord" placeholder="herhaal wachtwoord">
           </div>
-          <!-- <div class="form_group_radio">
-              <input type="radio" id="role1" name="role" value="administrator">
-              <label for="role1">Administrator</label>
+            <div class="form_group_radio">
+              <input type="radio" id="rol1" name="rol" value="admin">
+              <label for="rol1">Admin</label>
             </div>
             <div class="form_group_radio">
-              <input type="radio" id="role2" name="role" value="employee">
-              <label for="role2">Employee</label>
+              <input type="radio" id="rol2" name="rol" value="employee">
+              <label for="rol2">Employee</label>
             </div>
             <div class="form_group_radio">
-              <input type="radio" id="role3" name="role" value="customer" checked>
-              <label for="role3">Customer</label>
-            </div> -->
+              <input type="radio" id="rol3" name="rol" value="customer">
+              <label for="rol3">Customer</label>
+            </div>
           <div>
-            <a href="login.php" class="form_content_switch">Ik heb al een account</a>
             <button class="button_submit" type="sumbit">Maak nieuwe gebruiker</button>
           </div>
         </form>
       </section>
     </div>
   </div>
-</div>
-<!-- begin footer -->
-<?php
-require 'footer.php';
-?>
-<!-- einde footer -->
+</main>
+<?php require 'footer.php' ?>

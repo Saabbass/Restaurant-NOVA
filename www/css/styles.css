@@ -46,6 +46,9 @@
   --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
 
+  --border-xs: 1px solid #e7e393;
+  --border-xs-alt: 1px solid #f4c95d;
+  --border-xs-dark: 1px solid #dd7230;
   --border-small: 2px solid #e7e393;
   --border-small-alt: 2px solid #f4c95d;
   --border-small-dark: 2px solid #dd7230;
@@ -151,7 +154,7 @@ body {
 }
 
 .hr-dark {
-  border: 1px solid rgb(88, 88, 88);
+  border: var(--border-xs-dark);
   border-radius: 5px;
   margin: 0 auto;
 }
@@ -162,6 +165,7 @@ body {
   align-content: center;
   padding: 8px 16px;
   margin: 8px;
+  height: fit-content;
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -350,7 +354,7 @@ body {
   /* background-color: #f1f1f1; */
   /* background-color: rgb(189, 126, 0); */
   background-color: var(--btn-color-alt-light);
-  width: 160px;
+  /* width: 160px; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   transform: translateX(-40%);
@@ -372,7 +376,6 @@ body {
   /* background-color: #ddd; */
   background-color: var(--navigation-icon-hover-color);
   border-radius: 10px;
-
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
@@ -381,7 +384,7 @@ body {
 }
 
 .hr-yellow {
-  border: 1px solid var(--navigation-icon-hover-color);
+  border: var(--border-xs);
 }
 
 /* #endregion for header.php */
@@ -468,7 +471,7 @@ footer {
   max-width: 100%;
   margin: 16px 0;
   padding: 16px 0;
-  border-bottom: 1px solid gray;
+  border-bottom: var(--border-xs);
   & .link_holder {
     display: flex;
     flex-direction: column;
@@ -556,7 +559,7 @@ footer {
   max-width: 100%;
   padding: 16px 0;
   gap: 24px;
-  border-top: 1px solid gray;
+  border-top: var(--border-xs);
 
   & a {
     text-decoration: none;
@@ -565,7 +568,7 @@ footer {
 
     &:hover {
       color: var(--navigation-item-hover-color);
-      border-bottom: 1px solid gray;
+      border-bottom: var(--border-xs);
     }
   }
 }
@@ -772,7 +775,8 @@ form {
   background: rgb(98, 211, 143);
   color: rgb(0, 82, 20);
   padding: 10px;
-  width: 95%;
+  /* width: 95%; */
+  width: 100%;
   border-radius: 5px;
   margin: 20px auto;
 }
@@ -793,6 +797,66 @@ form {
   /* background-color: #88888891; */
   background-color: var(--btn-color-alt);
   border-radius: 10px;
+
+  & .scroll_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  & .account_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    /* background-color: #88888885; */
+    background-color: var(--section-bg-color-light);
+    border: var(--border-medium-dark);
+    border-radius: 10px;
+    width: 100%;
+    border-spacing: 0 1em;
+    color: var(--dark-color);
+    gap: 24px;
+
+    & .account_welcome{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 290px;
+      width: 100%;
+      padding: 40px 0;
+
+      & h1{
+        font-style: italic;
+      }
+    }
+
+    & .account_inner {
+      display: flex;
+      gap: 24px;
+
+      & .account_info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 145px;
+
+        & p {
+          font-weight: bold;
+          border-bottom: var(--border-small-dark);
+          height: 100%;
+          max-height: 24px;
+        }
+      }
+    }
+    & .account_btns {
+      display: flex;
+      gap: 24px;
+    }
+  }
 }
 
 .container_scroll table {
@@ -803,6 +867,7 @@ form {
   width: 100%;
   border-spacing: 0 1em;
   color: var(--dark-color);
+  padding: 8px;
 }
 
 .container_scroll table td {
@@ -812,7 +877,7 @@ form {
 
   /* border-bottom: #555 solid 2px; */
   border-bottom: var(--border-medium-dark);
-  padding-bottom: 5px;
+  padding-bottom: 16px;
 }
 
 .container_scroll table td input {
@@ -822,7 +887,7 @@ form {
 
 .btn-delete {
   font-size: 16px;
-  color: rgb(255, 255, 255);
+  color: var(--dark-color);
   align-content: center;
   padding: 8px 16px;
   margin: 14px;
@@ -840,7 +905,7 @@ form {
 
 .btn-update {
   font-size: 16px;
-  color: var(--white-color);
+  color: var(--dark-color);
   align-content: center;
   padding: 8px 16px;
   margin: 14px;
@@ -848,11 +913,43 @@ form {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
-  background-color: orange;
+  background-color: var(--btn-color);
   border-radius: 10px;
 }
 
 .btn-update:hover {
-  background-color: rgb(212, 148, 28);
+  background-color: var(--btn-hover-color-alt);
 }
 /* #endregion for gebruikers.php */
+
+/*
+Add a black background color to the top navigation
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  border-radius: 8px;
+}
+
+Style the links inside the navigation bar
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+Change the color of links on hover
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+Add a color to the active/current link
+.topnav .topmenu .active {
+  background-color: #04AA6D;
+  color: white;
+}
+*/
