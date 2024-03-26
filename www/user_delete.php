@@ -1,9 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-  echo "You are not logged in, please login. ";
-  echo "<a href='login.php'>Login here</a>";
-  exit;
+  header("Location: login.php");
+  exit();
 }
 
 require 'database.php';
@@ -57,7 +56,7 @@ if ($_SESSION['rol'] === 'admin' || $id == $main_user_id) {
         $sql = "DELETE FROM gebruiker WHERE gebruiker_id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
-        
+
         if ($stmt->execute()) {
 
           $sql = "DELETE FROM adres WHERE adres_id = :adresID";

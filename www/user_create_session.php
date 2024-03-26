@@ -3,9 +3,8 @@ session_start();
 include("database.php");
 
 if (!isset($_SESSION['user_id'])) {
-  echo "You are not logged in, please login. ";
-  echo "<a href='login.php'>Login here</a>";
-  exit;
+  header("Location: login.php");
+  exit();
 }
 
 if ($_SESSION['rol'] != 'admin' && $_SESSION['rol'] != 'employee') {

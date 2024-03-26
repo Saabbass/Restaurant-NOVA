@@ -2,9 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  echo "You are not logged in, please login. ";
-  echo "<a href='login.php'>Login here</a>";
-  exit;
+  header("Location: login.php");
+  exit();
 }
 
 if ($_SESSION['rol'] != 'admin' && $_SESSION['rol'] != 'employee') {
@@ -128,18 +127,18 @@ require 'header.php';
             <label for="check_wachtwoord">Herhaal wachtwoord</label>
             <input type="password" name="check_wachtwoord" id="check_wachtwoord" placeholder="herhaal wachtwoord">
           </div>
-            <div class="form_group_radio">
-              <input type="radio" id="rol1" name="rol" value="admin">
-              <label for="rol1">Admin</label>
-            </div>
-            <div class="form_group_radio">
-              <input type="radio" id="rol2" name="rol" value="employee">
-              <label for="rol2">Employee</label>
-            </div>
-            <div class="form_group_radio">
-              <input type="radio" id="rol3" name="rol" value="customer">
-              <label for="rol3">Customer</label>
-            </div>
+          <div class="form_group_radio">
+            <input type="radio" id="rol1" name="rol" value="admin">
+            <label for="rol1">Admin</label>
+          </div>
+          <div class="form_group_radio">
+            <input type="radio" id="rol2" name="rol" value="employee">
+            <label for="rol2">Employee</label>
+          </div>
+          <div class="form_group_radio">
+            <input type="radio" id="rol3" name="rol" value="customer">
+            <label for="rol3">Customer</label>
+          </div>
           <div>
             <button class="button_submit" type="sumbit">Maak nieuwe gebruiker</button>
           </div>
