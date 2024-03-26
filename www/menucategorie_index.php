@@ -8,8 +8,7 @@ if ($_SESSION['rol'] != 'admin' && $_SESSION['rol'] != 'employee') {
   exit;
 }
 
-$sql = "SELECT * FROM menugang INNER JOIN product ON menugang.product_id = product.product_id 
-INNER JOIN categorie ON product.categorie_id = categorie.categorie_id";
+$sql = "SELECT * FROM categorie";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -28,7 +27,7 @@ require 'header.php';
     <div class="container">
       <div class="container_width">
         <section class="container_scroll">
-          <div class="scroll_top">
+          <!-- <div class="scroll_top">
             <a class="btn-info" href="menucourse_create.php">Maak menugang aan</a>
             <div>
               <?php if (isset($_GET['error'])) { ?>
@@ -60,9 +59,9 @@ require 'header.php';
                 </tr>
               <?php endforeach; ?>
             </tbody>
-          </table>
+          </table> -->
           <div class="scroll_top">
-            <a class="btn-info" href="category_create.php">Maak menugang aan</a>
+            <a class="btn-info" href="menucategorie_create.php">Maak categorie aan</a>
             <div>
               <?php if (isset($_GET['error'])) { ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>

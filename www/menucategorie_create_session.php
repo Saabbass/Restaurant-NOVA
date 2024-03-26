@@ -19,17 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
 require 'database.php';
 
-$menugang_naam = $_POST['naam'];
+$categorie_naam = $_POST['naam'];
 
-$sql = "INSERT INTO menugang(menugang_naam) 
-  VALUES (:menugang_naam)";
+$sql = "INSERT INTO categorie(categorie_naam) 
+  VALUES (:categorie_naam)";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(":menugang_naam", $menugang_naam);
+$stmt->bindParam(":categorie_naam", $categorie_naam);
 
 if ($stmt->execute()) {
-  header("Location: product_index.php?success=Het product is toegevoegd!");
+  header("Location: menucategorie_index.php?success=De categorie is toegevoegd!");
   exit();
 } else {
-  header("Location: product_create.php?error=Er is een onbekende fout opgetreden!");
+  header("Location: menucategorie_create.php?error=Er is een onbekende fout opgetreden!");
   exit();
 }

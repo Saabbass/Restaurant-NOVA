@@ -44,7 +44,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
             <table>
               <thead>
                 <tr>
-                  <th>Nummer</th>
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
+                    if ($data === 'admin' || $data === 'employee') { ?>
+                      <th>Nummer</th>
+                    <?php } ?>
+                  <?php } ?>
                   <th>Naam</th>
                   <th>Beschrijving</th>
                   <th>Inkoopprijs</th>
@@ -58,7 +63,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
               <tbody>
                 <?php foreach ($producten as $product) : ?>
                   <tr>
-                    <td><?php echo $product['product_id'] ?></td>
+                    <?php if (isset($_SESSION['rol'])) {
+                      $data = $_SESSION['rol'];
+                      if ($data === 'admin' || $data === 'employee') { ?>
+                        <td><?php echo $product['product_id'] ?></td>
+                      <?php } ?>
+                    <?php } ?>
                     <td><?php echo $product['product_naam'] ?></td>
                     <td><?php echo $product['beschrijving'] ?></td>
                     <td><?php echo $product['inkoopprijs'] ?></td>
@@ -100,7 +110,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
   <!-- einde footer -->
 <?php
 } else {
-  header("Location: index.php");
+  header("Location: login.php");
   exit();
 }
 ?>
