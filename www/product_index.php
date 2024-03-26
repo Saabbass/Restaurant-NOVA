@@ -23,7 +23,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
         <div class="container_width">
           <section class="container_scroll">
             <div class="scroll_top">
-              <a class="btn-info" href="product_create.php">Maak gerecht aan</a>
+              <?php if (isset($_SESSION['rol'])) {
+                $data = $_SESSION['rol'];
+                if ($data === 'admin' || $data === 'employee') {
+              ?>
+                  <a class="btn-info" href="product_create.php">Maak gerecht aan</a>
+                <?php } ?>
+              <?php } ?>
               <div>
                 <?php if (isset($_GET['error'])) { ?>
                   <p class="error"><?php echo $_GET['error']; ?></p>

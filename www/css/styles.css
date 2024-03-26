@@ -465,6 +465,7 @@ footer {
 
 .footer_nav_links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
   width: 100%;
@@ -555,6 +556,7 @@ footer {
 
 .footer_nav_bottom {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 100%;
   padding: 16px 0;
