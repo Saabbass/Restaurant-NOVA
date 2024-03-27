@@ -90,50 +90,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <a href="user_update.php?id=<?php echo $account['gebruiker_id'] ?>" class="btn-update">update</a>
               </div>
             </div>
-
-            <!-- <table>
-              <thead>
-                <tr>
-                  <th>Email</th>
-                  <th>Voornaam</th>
-                  <th>Tussenvoegsel</th>
-                  <th>Achternaam</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><?php echo $account['email'] ?></td>
-                  <td><?php echo $account['gebruiker_voornaam'] ?></td>
-                  <td><?php echo $account['gebruiker_tussenvoegsel'] ?></td>
-                  <td><?php echo $account['gebruiker_achternaam'] ?></td>
-                </tr>
-              <tbody>
-                <thead>
-                  <tr>
-                    <th>Land</th>
-                    <th>Postcode</th>
-                    <th>Woonplaats</th>
-                    <th>Straat</th>
-                    <th>Huisnummer</th>
-                    <th>Toevoeging</th>
-                  </tr>
-                </thead>
-
-              </tbody>
-              <tr>
-                <td><?php echo $account['land'] ?></td>
-                <td><?php echo $account['postcode'] ?></td>
-                <td><?php echo $account['woonplaats'] ?></td>
-                <td><?php echo $account['straat'] ?></td>
-                <td><?php echo $account['huisnummer'] ?></td>
-                <td><?php echo $account['toevoeging'] ?></td>
-                <td>
-                  <a href="user_delete.php?id=<?php echo $account['gebruiker_id'] ?>" class="btn-delete">delete</a>
-                  <a href="updateUser.php?id=<?php echo $account['gebruiker_id'] ?>" class="btn-update">update</a>
-                </td>
-              </tr>
-              </tbody>
-            </table> -->
           </section>
         </div>
       </div>

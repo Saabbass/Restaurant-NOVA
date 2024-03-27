@@ -51,7 +51,50 @@ require 'header.php';
               <?php } ?>
             </div>
           </div>
-          <table>
+
+          <!-- mobile view -->
+          <?php foreach ($reservations as $reservation) : ?>
+            <table class="vertical_table">
+              <tbody class="vertical_cell">
+                <tr>
+                  <th>Nummer:</th>
+                  <td><?php echo $reservation['reservering_nummer'] ?></td>
+                </tr>
+                <tr>
+                  <th>Naam:</th>
+                  <td><?php echo $reservation['reservering_naam'] ?></td>
+                </tr>
+                <tr>
+                  <th>Datum:</th>
+                  <td><?php echo $reservation['datum'] ?></td>
+                </tr>
+                <tr>
+                  <th>Tijd:</th>
+                  <td><?php echo $reservation['tijd'] ?></td>
+                </tr>
+                <tr>
+                  <th>Aantal personen:</th>
+                  <td><?php echo $reservation['aantal_personen'] ?></td>
+                </tr>
+                <tr>
+                  <th>Tafelnummer:</th>
+                  <td><?php echo $reservation['tafelnummer'] ?></td>
+                </tr>
+                <tr>
+                  <th>Gebruikers nummer</th>
+                  <td><?php echo $reservation['gebruiker_id'] ?></td>
+                </tr>
+                <td>
+                  <a href="reservation_delete.php?id=<?php echo $reservation['reservering_nummer'] ?>" class="btn-delete">delete</a>
+                  <a href="reservation_update.php?id=<?php echo $reservation['reservering_nummer'] ?>" class="btn-update">update</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          <?php endforeach; ?>
+
+          <!-- laptop view -->
+          <table class="horizontal_table">
             <thead>
               <tr>
                 <th>Nummer</th>
@@ -61,6 +104,7 @@ require 'header.php';
                 <th>Aantal personen</th>
                 <th>Tafelnummer</th>
                 <th>Gebruikers nummer</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

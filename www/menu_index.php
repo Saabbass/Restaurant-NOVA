@@ -3,8 +3,7 @@ session_start();
 // if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol']) === 'admin' || ($_SESSION['rol']) === 'employee')) {
 require 'database.php';
 
-$sql = "SELECT * FROM menugang INNER JOIN product ON menugang.product_id = product.product_id 
-INNER JOIN categorie ON product.categorie_id = categorie.categorie_id";
+$sql = "SELECT * FROM product INNER JOIN categorie ON product.categorie_id = categorie.categorie_id";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -41,13 +40,66 @@ require 'header.php';
               <?php } ?>
             </div>
           </div>
-          <table>
+
+          <!-- mobile view -->
+          <?php foreach ($producten as $product) : ?>
+            <table class="vertical_table">
+              <tbody class="vertical_cell">
+                <?php if (isset($_SESSION['rol'])) {
+                  $data = $_SESSION['rol'];
+                  if ($data === 'admin' || $data === 'employee') { ?>
+                    <tr>
+                      <th>Nummer:</th>
+                      <td><?php echo $product['product_id'] ?></td>
+                    </tr>
+                  <?php } ?>
+                <?php } ?>
+                <tr>
+                      <th>Menugang:</th>
+                      <td><?php echo $product['categorie_naam'] ?></td>
+                    </tr>
+                <tr>
+                  <th>Naam gerecht:</th>
+                  <td><?php echo $product['product_naam'] ?></td>
+                </tr>
+                <tr>
+                  <th>Omschrijving:</th>
+                  <td><?php echo $product['beschrijving'] ?></td>
+                </tr>
+                <tr>
+                  <th>Prijs:</th>
+                  <td><?php echo $product['verkoopprijs'] ?></td>
+                </tr>
+                <tr>
+                  <th>Vega:</th>
+                  <td><?php echo $product['is_vega'] ?></td>
+                </tr>
+                <?php if (isset($_SESSION['rol'])) {
+                  $data = $_SESSION['rol'];
+                  if ($data === 'admin' || $data === 'employee') { ?>
+                    <tr>
+                      <th>Vooraad:</th>
+                      <td><?php echo $product['aantal_vooraad'] ?></td>
+                    </tr>
+                    <!-- <tr>
+                      <td><a href="menucourse_delete.php?id=<?php echo $product['menugang_id'] ?>" class="btn-delete">delete</a>
+                        <a href="menucourse_update.php?id=<?php echo $product['menugang_id'] ?>" class="btn-update">update</a>
+                      </td>
+                    </tr> -->
+                  <?php } ?>
+                <?php } ?>
+              </tbody>
+            </table>
+          <?php endforeach; ?>
+
+          <!-- laptop view -->
+          <table class="horizontal_table">
             <thead>
               <tr>
                 <?php if (isset($_SESSION['rol'])) {
                   $data = $_SESSION['rol'];
                   if ($data === 'admin' || $data === 'employee') { ?>
-                    <th>ID</th>
+                    <th>Nummer</th>
                   <?php } ?>
                 <?php } ?>
                 <th>Naam gang</th>
@@ -60,7 +112,6 @@ require 'header.php';
                   $data = $_SESSION['rol'];
                   if ($data === 'admin' || $data === 'employee') { ?>
                     <th>Vooraad</th>
-                    <th>Categorie</th>
                   <?php } ?>
                 <?php } ?>
               </tr>
@@ -71,10 +122,10 @@ require 'header.php';
                   <?php if (isset($_SESSION['rol'])) {
                     $data = $_SESSION['rol'];
                     if ($data === 'admin' || $data === 'employee') { ?>
-                      <td><?php echo $product['menugang_id'] ?></td>
+                      <td><?php echo $product['product_id'] ?></td>
                     <?php } ?>
                   <?php } ?>
-                  <td><?php echo $product['menugang_naam'] ?></td>
+                  <td><?php echo $product['categorie_naam'] ?></td>
                   <td><?php echo $product['product_naam'] ?></td>
                   <td><?php echo $product['beschrijving'] ?></td>
                   <td><?php echo $product['verkoopprijs'] ?></td>
@@ -84,7 +135,6 @@ require 'header.php';
                     $data = $_SESSION['rol'];
                     if ($data === 'admin' || $data === 'employee') { ?>
                       <td><?php echo $product['aantal_vooraad'] ?></td>
-                      <td><?php echo $product['categorie_naam'] ?></td>
                     <?php } ?>
                   <?php } ?>
                   <!-- <td>

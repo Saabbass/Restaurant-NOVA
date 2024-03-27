@@ -105,7 +105,7 @@ require 'header.php';
             </div>
           <?php } ?>
           <div>
-            <button class="button_submit" type="sumbit">Maak nieuwe gebruiker</button>
+            <button class="button_submit" type="sumbit">Aanpassen</button>
           </div>
         </form>
       </section>

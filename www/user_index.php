@@ -39,10 +39,86 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
                 <?php } ?>
               </div>
             </div>
-            <table>
+
+            <!-- mobile view -->
+            <?php foreach ($users as $user) : ?>
+              <table class="vertical_table">
+                <tbody class="vertical_cell">
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
+                    if ($data === 'admin' || $data === 'employee') { ?>
+                      <tr>
+                        <th>ID:</th>
+                        <td><?php echo $user['gebruiker_id'] ?></td>
+                      </tr>
+                    <?php } ?>
+                  <?php } ?>
+                  <tr>
+                    <th>Email:</th>
+                    <td><?php echo $user['email'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Voornaam:</th>
+                    <td><?php echo $user['gebruiker_voornaam'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Achternaam:</th>
+                    <td><?php echo $user['gebruiker_achternaam'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Land:</th>
+                    <td><?php echo $user['land'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Postcode:</th>
+                    <td><?php echo $user['postcode'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Woonplaats:</th>
+                    <td><?php echo $user['woonplaats'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Straat:</th>
+                    <td><?php echo $user['straat'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Huisnummer:</th>
+                    <td><?php echo $user['huisnummer'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Toevoeging:</th>
+                    <td><?php echo $user['toevoeging'] ?></td>
+                  </tr>
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
+                    if ($data === 'admin' || $data === 'employee') { ?>
+                      <tr>
+                        <th>Rol:</th>
+                        <td><?php echo $user['rol'] ?></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="user_delete.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-delete">delete</a>
+                          <a href="user_update.php?id=<?php echo $user['gebruiker_id'] ?>" class="btn-update">update</a>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                  <?php } ?>
+                </tbody>
+              </table>
+            <?php endforeach; ?>
+
+            <!-- laptop view -->
+            <table class="horizontal_table">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
+                    if ($data === 'admin' || $data === 'employee') {
+                  ?>
+                      <th>ID</th>
+                    <?php } ?>
+                  <?php } ?>
                   <th>Email</th>
                   <th>Voornaam</th>
                   <th>Achternaam</th>
@@ -52,13 +128,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
                   <th>Straat</th>
                   <th>Huisnummer</th>
                   <th>Toevoeging</th>
-                  <th>Rol</th>
+                  <?php if (isset($_SESSION['rol'])) {
+                    $data = $_SESSION['rol'];
+                    if ($data === 'admin' || $data === 'employee') {
+                  ?>
+                      <th>Rol</th>
+                      <th></th>
+                    <?php } ?>
+                  <?php } ?>
                 </tr>
               </thead>
               <tbody>
                 <?php foreach ($users as $user) : ?>
                   <tr>
-                    <td><?php echo $user['gebruiker_id'] ?></td>
+                    <?php if (isset($_SESSION['rol'])) {
+                      $data = $_SESSION['rol'];
+                      if ($data === 'admin' || $data === 'employee') {
+                    ?>
+                        <td><?php echo $user['gebruiker_id'] ?></td>
+                      <?php } ?>
+                    <?php } ?>
                     <td><?php echo $user['email'] ?></td>
                     <td><?php echo $user['gebruiker_voornaam'] ?></td>
                     <td><?php echo $user['gebruiker_achternaam'] ?></td>
