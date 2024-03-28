@@ -24,9 +24,6 @@
             <li>
               <a href="reservation_create.php">Tafel reserveren</a>
             </li>
-            <li>
-              <a href="">Over ons</a>
-            </li>
           </ul>
         </nav>
       </div>

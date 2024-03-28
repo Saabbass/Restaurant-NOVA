@@ -41,7 +41,6 @@ $stmt->bindParam(":image", $image);
 $stmt->bindParam(":is_vega", $is_vega);
 $stmt->bindParam(":aantal_vooraad", $aantal_vooraad);
 $stmt->bindParam(":categorie_id", $categorie_id);
-//TODO: bindPArams van maken
 
 if ($stmt->execute()) {
   header("Location: product_index.php?success=Het product is toegevoegd!");

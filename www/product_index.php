@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol']) === 'admin' || ($_SESSION['rol']) === 'employee' || ($_SESSION['rol']) === 'customer')) {
+// if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol']) === 'admin' || ($_SESSION['rol']) === 'employee' || ($_SESSION['rol']) === 'customer')) {
   require 'database.php';
 
-  $sql = "SELECT * FROM product INNER JOIN categorie ON product.categorie_id = categorie.categorie_id";
+  $sql = "SELECT * FROM product INNER JOIN categorie ON product.categorie_id = categorie.categorie_id ORDER BY `categorie`.`categorie_id` ASC";
 
   $stmt = $conn->prepare($sql);
   $stmt->execute();
@@ -22,6 +22,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
       <div class="container">
         <div class="container_width">
           <section class="container_scroll">
+            <script src="js/show_more.js" async></script>
             <div class="scroll_top">
               <?php if (isset($_SESSION['rol'])) {
                 $data = $_SESSION['rol'];
@@ -42,126 +43,51 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
               </div>
             </div>
 
-            <!-- mobile view -->
-            <?php foreach ($producten as $product) : ?>
-              <table class="vertical_table">
-                <tbody class="vertical_cell">
-                  <?php if (isset($_SESSION['rol'])) {
-                    $data = $_SESSION['rol'];
-                    if ($data === 'admin' || $data === 'employee') { ?>
-                      <tr>
-                        <th>Nummer:</th>
-                        <td><?php echo $product['product_id'] ?></td>
-                      </tr>
-                    <?php } ?>
-                  <?php } ?>
-                  <tr>
-                    <th>product naam:</th>
-                    <td><?php echo $product['product_naam'] ?></td>
-                  </tr>
-                  <tr>
-                    <th>Omschrijving:</th>
-                    <td><?php echo $product['beschrijving'] ?></td>
-                  </tr>
-                  <tr>
-                    <th>Prijs:</th>
-                    <td><?php echo $product['verkoopprijs'] ?></td>
-                  </tr>
-                  <tr>
-                    <th>Vega:</th>
-                    <td><?php echo $product['is_vega'] ?></td>
-                  </tr>
-                  <?php if (isset($_SESSION['rol'])) {
-                    $data = $_SESSION['rol'];
-                    if ($data === 'admin' || $data === 'employee') { ?>
-                      <tr>
-                        <th>Vooraad:</th>
-                        <td><?php echo $product['aantal_vooraad'] ?></td>
-                      </tr>
-                      <tr>
-                        <th>Inkoopprijs:</th>
-                        <td><?php echo $product['inkoopprijs'] ?></td>
-                      </tr>
-                      <tr>
-                        <th>Categorie:</th>
-                        <td><?php echo $product['categorie_naam'] ?></td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="product_delete.php?id=<?php echo $product['product_id'] ?>" class="btn-delete">delete</a>
-                          <a href="product_update.php?id=<?php echo $product['product_id'] ?>" class="btn-update">update</a>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                  <?php } ?>
-                </tbody>
-              </table>
-            <?php endforeach; ?>
+            <div class="card_holder">
+              <?php foreach ($producten as $product) : ?>
+                <div class="card">
+                  <div class="card_inner">
+                    <img src="img/<?php echo $product['afbeelding'] ?>" alt="error">
+                    <div class="card_text">
+                      <?php if (isset($_SESSION['rol'])) {
+                        $data = $_SESSION['rol'];
+                        if ($data === 'admin' || $data === 'employee') { ?>
+                          <p><?php echo $product['product_id'] ?></p>
+                        <?php } ?>
+                      <?php } ?>
+                      <p><?php echo $product['categorie_naam'] ?></p>
+                      <p><?php echo $product['product_naam'] ?></p>
+                      <div class="card_text_description" id="clipped">
+                        <p><?php echo $product['beschrijving'] ?></p>
+                      </div>
+                      <div id="clippedmore">
+                        <p><a href="product_detail.php?id=<?php echo $product['product_id'] ?>">Zie meer...</a></p>
+                      </div>
+                      <p>€<?php echo $product['verkoopprijs'] ?></p>
+                      <p>Vega: <?php echo $product['is_vega'] ?></p>
+                      <?php if (isset($_SESSION['rol'])) {
+                        $data = $_SESSION['rol'];
+                        if ($data === 'admin' || $data === 'employee') { ?>
+                          <p>Vooraad: <?php echo $product['aantal_vooraad'] ?></p>
+                          <p>Inkoopprijs: <?php echo $product['inkoopprijs'] ?></p>
+                        <?php } ?>
+                      <?php } ?>
+                    </div>
 
-            <!-- laptop view -->
-            <table class="horizontal_table">
-              <thead>
-                <tr>
-                  <?php if (isset($_SESSION['rol'])) {
-                    $data = $_SESSION['rol'];
-                    if ($data === 'admin' || $data === 'employee') { ?>
-                      <th>Nummer</th>
-                    <?php } ?>
-                  <?php } ?>
-                  <th>Naam</th>
-                  <th>Beschrijving</th>
-                  <th>Inkoopprijs</th>
-                  <th>Verkoopprijs</th>
-                  <!-- <th>Afbeelding</th> -->
-                  <th>Vega</th>
-                  <th>Vooraad</th>
-                  <th>Categorie</th>
-                  <?php if (isset($_SESSION['rol'])) {
-                    $data = $_SESSION['rol'];
-                    if ($data === 'admin' || $data === 'employee') { ?>
-                      <th></th>
-                    <?php } ?>
-                  <?php } ?>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($producten as $product) : ?>
-                  <tr>
                     <?php if (isset($_SESSION['rol'])) {
                       $data = $_SESSION['rol'];
                       if ($data === 'admin' || $data === 'employee') { ?>
-                        <td><?php echo $product['product_id'] ?></td>
+                        <div class="btn_holder">
+                          <a href="product_delete.php?id=<?php echo $product['product_id'] ?>" class="btn-delete">delete</a>
+                          <a href="product_update.php?id=<?php echo $product['product_id'] ?>" class="btn-update">update</a>
+                        </div>
                       <?php } ?>
                     <?php } ?>
-                    <td><?php echo $product['product_naam'] ?></td>
-                    <td><?php echo $product['beschrijving'] ?></td>
-                    <td><?php echo $product['inkoopprijs'] ?></td>
-                    <td><?php echo $product['verkoopprijs'] ?></td>
-                    <!-- <td><img src="img/<?php echo $product['afbeelding'] ?>" alt=""></td> -->
-                    <td><?php echo $product['is_vega'] ?></td>
-                    <td><?php echo $product['aantal_vooraad'] ?></td>
-                    <td><?php echo $product['categorie_naam'] ?></td>
-                    <td>
-                      <?php if (isset($_SESSION['rol'])) {
-                        $data = $_SESSION['rol'];
-                        if ($data == 'admin') {
-                      ?>
-                          <a href="product_delete.php?id=<?php echo $product['product_id'] ?>" class="btn-delete">delete</a>
-                          <a href="product_update.php?id=<?php echo $product['product_id'] ?>" class="btn-update">update</a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
 
-                        <?php } elseif ($data == 'employee') { ?>
-                          <a href="product_delete.php?id=<?php echo $product['product_id'] ?>" class="btn-delete">delete</a>
-                          <a href="product_update.php?id=<?php echo $product['product_id'] ?>" class="btn-update">update</a>
-                        <?php } else {
-                        ?>
-
-                        <?php } ?>
-                      <?php } ?>
-                    </td>
-                  </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
           </section>
         </div>
       </div>
@@ -173,8 +99,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol
   ?>
   <!-- einde footer -->
 <?php
-} else {
-  header("Location: login.php");
-  exit();
-}
+// } else {
+//   header("Location: login.php");
+//   exit();
+// }
 ?>

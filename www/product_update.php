@@ -50,11 +50,19 @@ require 'header.php';
           <input type="hidden" name="product_procesID" id="product_procesID" value="<?php echo $product_id ?>" placeholder="<?php echo $product_id ?>">
           <div class="form_group">
             <label for="naam">Naam:</label>
-            <input type="text" id="naam" name="naam">
+            <?php if (isset($_GET['naam'])) { ?>
+              <input type="text" id="naam" name="naam" value="<?php echo $_GET['product_naam']; ?>">
+            <?php } else { ?>
+              <input type="text" id="naam" name="naam" value="<?php echo $product_data['product_naam']; ?>" placeholder="<?php echo $product_data['product_naam']; ?>">
+            <?php } ?>
           </div>
           <div class="form_group">
             <label for="beschrijving">Beschrijving:</label>
-            <input type="text" id="beschrijving" name="beschrijving">
+            <?php if (isset($_GET['beschrijving'])) { ?>
+              <input type="text" id="beschrijving" name="beschrijving" value="<?php echo $_GET['beschrijving']; ?>">
+            <?php } else { ?>
+              <input type="text" id="beschrijving" name="beschrijving" value="<?php echo $product_data['beschrijving']; ?>" placeholder="<?php echo $product_data['beschrijving']; ?>">
+            <?php } ?>
           </div>
           <div class="form_group">
             <label for="categorie">Categorie:</label>
@@ -66,23 +74,44 @@ require 'header.php';
           </div>
           <div class="form_group">
             <label for="inkoopprijs">Inkoopprijs:</label>
-            <input type="number" id="inkoopprijs" name="inkoopprijs">
+            <?php if (isset($_GET['inkoopprijs'])) { ?>
+              <input type="number" id="inkoopprijs" name="inkoopprijs" value="<?php echo $_GET['inkoopprijs']; ?>">
+            <?php } else { ?>
+              <input type="number" id="inkoopprijs" name="inkoopprijs" value="<?php echo $product_data['inkoopprijs']; ?>" placeholder="<?php echo $product_data['inkoopprijs']; ?>">
+            <?php } ?>
           </div>
           <div class="form_group">
             <label for="verkoopprijs">Verkoopprijs:</label>
-            <input type="number" id="verkoopprijs" name="verkoopprijs">
+            <?php if (isset($_GET['verkoopprijs'])) { ?>
+              <input type="number" id="verkoopprijs" name="verkoopprijs" value="<?php echo $_GET['verkoopprijs']; ?>">
+            <?php } else { ?>
+              <input type="number" id="verkoopprijs" name="verkoopprijs" value="<?php echo $product_data['verkoopprijs']; ?>" placeholder="<?php echo $product_data['verkoopprijs']; ?>">
+            <?php } ?>
           </div>
           <div class="form_group">
             <label for="image">Afbeelding:</label>
-            <input type="file" id="image" name="image">
+            <?php if (isset($_GET['image'])) { ?>
+              <input type="file" id="image" name="image" value="<?php echo $_GET['afbeelding']; ?>">
+            <?php } else { ?>
+              <input type="file" id="image" name="image" value="<?php echo $product_data['afbeelding']; ?>" placeholder="<?php echo $product_data['afbeelding']; ?>">
+            <?php } ?>
+            <!-- <input type="file" id="image" name="image"> -->
           </div>
           <div class="form_group">
             <label for="is_vega">Vega:</label>
-            <input type="text" id="is_vega" name="is_vega">
+            <?php if (isset($_GET['is_vega'])) { ?>
+              <input type="text" id="is_vega" name="is_vega" value="<?php echo $_GET['is_vega']; ?>">
+            <?php } else { ?>
+              <input type="text" id="is_vega" name="is_vega" value="<?php echo $product_data['is_vega']; ?>" placeholder="<?php echo $product_data['is_vega']; ?>">
+            <?php } ?>
           </div>
           <div class="form_group">
             <label for="aantal_vooraad">Vooraad:</label>
-            <input type="number" id="aantal_vooraad" name="aantal_vooraad">
+            <?php if (isset($_GET['aantal_vooraad'])) { ?>
+              <input type="number" id="aantal_vooraad" name="aantal_vooraad" value="<?php echo $_GET['aantal_vooraad']; ?>">
+            <?php } else { ?>
+              <input type="number" id="aantal_vooraad" name="aantal_vooraad" value="<?php echo $product_data['aantal_vooraad']; ?>" placeholder="<?php echo $product_data['aantal_vooraad']; ?>">
+            <?php } ?>
           </div>
           <button type="submit" class="button_submit" name="submit">Toevoegen</button>
         </form>

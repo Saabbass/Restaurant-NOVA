@@ -111,7 +111,7 @@ if (
       exit();
     } else {
       $sql = "INSERT INTO adres(land, postcode, woonplaats, straat, huisnummer, toevoeging) 
-      VALUES (:land, :postcode, :woonplaats, :straat, :huisnummer, :toevoeging)"; //TODO: bindPArams van maken
+      VALUES (:land, :postcode, :woonplaats, :straat, :huisnummer, :toevoeging)";
       $stmt = $conn->prepare($sql);
       $stmt->bindParam(":land", $land);
       $stmt->bindParam(":postcode", $postcode);

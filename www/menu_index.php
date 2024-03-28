@@ -3,7 +3,7 @@ session_start();
 // if (isset($_SESSION['user_id']) && isset($_SESSION['email']) && (($_SESSION['rol']) === 'admin' || ($_SESSION['rol']) === 'employee')) {
 require 'database.php';
 
-$sql = "SELECT * FROM product INNER JOIN categorie ON product.categorie_id = categorie.categorie_id";
+$sql = "SELECT * FROM product INNER JOIN categorie ON product.categorie_id = categorie.categorie_id ORDER BY categorie.categorie_id ASC";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -55,9 +55,9 @@ require 'header.php';
                   <?php } ?>
                 <?php } ?>
                 <tr>
-                      <th>Menugang:</th>
-                      <td><?php echo $product['categorie_naam'] ?></td>
-                    </tr>
+                  <th>Menugang:</th>
+                  <td><?php echo $product['categorie_naam'] ?></td>
+                </tr>
                 <tr>
                   <th>Naam gerecht:</th>
                   <td><?php echo $product['product_naam'] ?></td>
@@ -137,23 +137,6 @@ require 'header.php';
                       <td><?php echo $product['aantal_vooraad'] ?></td>
                     <?php } ?>
                   <?php } ?>
-                  <!-- <td>
-                    <?php if (isset($_SESSION['rol'])) {
-                      $data = $_SESSION['rol'];
-                      if ($data == 'admin') {
-                    ?>
-                        <a href="menucourse_delete.php?id=<?php echo $product['menugang_id'] ?>" class="btn-delete">delete</a>
-                        <a href="menucourse_update.php?id=<?php echo $product['menugang_id'] ?>" class="btn-update">update</a>
-
-                      <?php } elseif ($data == 'employee') { ?>
-                        <a href="menucourse_delete.php?id=<?php echo $product['menugang_id'] ?>" class="btn-delete">delete</a>
-                        <a href="menucourse_update.php?id=<?php echo $product['menugang_id'] ?>" class="btn-update">update</a>
-                      <?php } else {
-                      ?>
-
-                      <?php } ?>
-                    <?php } ?>
-                  </td> -->
                 </tr>
               <?php endforeach; ?>
             </tbody>
